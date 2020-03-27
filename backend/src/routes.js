@@ -21,5 +21,6 @@ routes.get('/profile', ProfileController.index);
 
 // session
 routes.post('/sessions', SessionController.create);
+routes.post('/login', SessionController.login);
 
 module.exports = routes;
