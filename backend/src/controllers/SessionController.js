@@ -21,7 +21,7 @@ module.exports = {
 
         const ong= await connection('ongs')
             .where('email', email)
-            .select('name')
+            .select('name, id')
             .first();
 
         if (!ong) {
