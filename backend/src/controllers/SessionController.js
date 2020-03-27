@@ -14,5 +14,21 @@ module.exports = {
         }
 
         return res.json(ong);
+    },
+
+    async login(req, res) {
+        const { email } = req.body;
+
+        const ong= await connection('ongs')
+            .where('email', email)
+            .select('name')
+            .first();
+
+        if (!ong) {
+            return res.status(400).json({ error: "No ONG found for this ID"});
+        }
+
+        return res.json(ong);
     }
+
 }
