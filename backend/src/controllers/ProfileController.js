@@ -11,7 +11,7 @@ module.exports = {
             .select(['incidents.*', 'ongs.name', 'ongs.email', 'ongs.whatsapp', 'ongs.city', 'ongs.uf'])
             .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
             .where('ong_id', ong_id)
-            .limit(5).offset( (page-1)*5 );
+            .limit(4).offset( (page-1)*4 );
     
         return res.json(incidents);
     }
