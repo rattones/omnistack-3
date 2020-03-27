@@ -7,7 +7,7 @@ const app = express();
 // app.use(cors({
 //     origin: 'http://meuapp.com'
 // }));     // produção
-app.unsubscribe(cors());    // desenvolvimento
+app.use(cors());    // desenvolvimento
 app.use(express.json());
 app.use(routes);
 
