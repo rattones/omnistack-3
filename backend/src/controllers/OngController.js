@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
 // const crypto = require('crypto');    // rocketseat
-const uuid = require('uuidv4');
-
+// const uuid = require('uuidv4');      // alterada para generateUniqueId -- tests
+const generateUniqueId = require('../utils/generateUniqueId');
 
 module.exports = {
 
@@ -15,7 +15,8 @@ module.exports = {
         const { name, email, whatsapp, city, uf }= req.body;
 
         // const id = crypto.randomBytes(4).toString('HEX');    // rocketseat
-        const id = uuid.uuid();
+        // const id = uuid.uuid();
+        const id = generateUniqueId();
     
         await connection('ongs').insert({
             id, name, email, whatsapp, city, uf
