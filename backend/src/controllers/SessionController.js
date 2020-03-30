@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const { hashPassword } = require('../utils/helpersFunctions');
 
 module.exports = {
     async create(req, res) {
@@ -17,10 +18,12 @@ module.exports = {
     },
 
     async login(req, res) {
-        const { email } = req.body;
+        const { email, password } = req.body;
+        const passHash = hashPassword(password); 
 
         const ong= await connection('ongs')
             .where('email', email)
+            .where('password', passHash)
             .select(['name', 'id'])
             .first();
 

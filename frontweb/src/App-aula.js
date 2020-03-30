@@ -8,8 +8,7 @@ function App() {
   function increment() {
       counter++;
       setCounter(counter);
-
-      console.log(counter);
+;
   }
 
 return (

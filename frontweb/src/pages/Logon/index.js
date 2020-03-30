@@ -12,6 +12,7 @@ import heroesImg from '../../assets/heroes.png';
 export default function Logon() {
 
     const [ email, setEmail ]= useState('');
+    const [ password, setPassword ]= useState('');
 
     const history= useHistory();
 
@@ -19,7 +20,7 @@ export default function Logon() {
         event.preventDefault();
 
         try {
-            const response= await api.post('login', {email});
+            const response= await api.post('login', {email, password});
 
             localStorage.setItem('ongId', response.data.id);
             localStorage.setItem('ongName', response.data.name);
@@ -42,6 +43,12 @@ export default function Logon() {
                         <input placeholder="Seu Email" 
                             value={email}
                             onChange={event => setEmail(event.target.value)}
+                        />
+                        <input type="password" 
+                            placeholder="Senha"
+                            type="password"
+                            value={password}
+                            onChange={event => setPassword(event.target.value)}
                         />
                         <button className="button" type="submit">Entrar</button>
 
